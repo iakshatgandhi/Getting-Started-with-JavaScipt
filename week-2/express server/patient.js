@@ -1,10 +1,6 @@
 const express = require('express');
 const { use } = require('../02-nodejs/solutions/todoServer.solution');
 const app = express();
-<<<<<<< HEAD
-=======
-const zod = require('zod');
->>>>>>> 25f997a11b4158915292373a633f7a37e825854e
 const port = 3000;
 
 var users = [{
@@ -16,17 +12,11 @@ var users = [{
     }]
 }];
 
-<<<<<<< HEAD
-=======
-const NumberSchema = zod.number();
-
->>>>>>> 25f997a11b4158915292373a633f7a37e825854e
 app.use(express.json());
 
 app.get('/users', function(req, res) {
     const johnkidney = users[0].kidneys;
     const numberOfKidneys = johnkidney.length;
-<<<<<<< HEAD
     let numberOfHealthyKidneys = 0;
     for(let i = 0; i < numberOfKidneys; i++) {
         if(johnkidney[i].condition === 'good') {
@@ -39,23 +29,6 @@ app.get('/users', function(req, res) {
         numberOfHealthyKidneys,
         numberOfUnhealthyKidneys
     });
-=======
-    const validatedData = NumberSchema.safeParse(numberOfKidneys);
-    if(!validatedData.success) {
-        let numberOfHealthyKidneys = 0;
-        for(let i = 0; i < numberOfKidneys; i++) {
-            if(johnkidney[i].condition === 'good') {
-                numberOfHealthyKidneys++;
-            }
-        }
-        const numberOfUnhealthyKidneys = numberOfKidneys - numberOfHealthyKidneys;
-        res.json({
-            numberOfKidneys,
-            numberOfHealthyKidneys,
-            numberOfUnhealthyKidneys
-        });
-    }
->>>>>>> 25f997a11b4158915292373a633f7a37e825854e
 })
 
 app.post('/users', function(req, res) {
